@@ -23,6 +23,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { SkillBadge } from "@/components/SkillBadge"
 import profilesData from "@/data/profiles.json"
 import { useTheme } from "next-themes"
 
@@ -249,9 +250,7 @@ export default function Home() {
 
                   <div className="mt-4 flex flex-wrap justify-center gap-2">
                     {profile.habilidadesTecnicas.slice(0, 3).map((skill, index) => (
-                      <Badge key={index} variant="outline" className="text-xs">
-                        {skill}
-                      </Badge>
+                      <SkillBadge key={index} skill={skill} className="text-xs" />
                     ))}
                     {profile.habilidadesTecnicas.length > 3 && (
                       <Badge variant="outline" className="text-xs">
@@ -327,9 +326,7 @@ export default function Home() {
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedProfile.habilidadesTecnicas.map((skill, index) => (
-                        <Badge key={index} variant="secondary">
-                          {skill}
-                        </Badge>
+                        <SkillBadge key={index} skill={skill} />
                       ))}
                     </div>
                   </div>
