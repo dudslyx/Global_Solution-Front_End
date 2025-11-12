@@ -28,6 +28,7 @@ import profilesData from "@/data/profiles.json"
 import { useTheme } from "next-themes"
 import { SoftSkillBadge } from "@/components/SoftSkillBadge"
 import { InterestAreaBadge } from "@/components/InterestAreaBadge"
+import { AreaBadge } from "@/components/AreaBadge"
 
 interface Profile {
   id: number
@@ -174,7 +175,7 @@ export default function Home() {
               <SelectContent>
                 {areas.map((area) => (
                   <SelectItem key={area} value={area}>
-                    {area === "all" ? "Todas as Áreas" : area}
+                    {area === "all" ? "Todas as Áreas" : <AreaBadge area={area} />}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -200,7 +201,7 @@ export default function Home() {
               <SelectContent>
                 {technologies.map((tech) => (
                   <SelectItem key={tech} value={tech}>
-                    {tech === "all" ? "Todas as Tecnologias" : tech}
+                    {tech === "all" ? "Todas as Tecnologias" : <SkillBadge skill={tech} />}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -246,9 +247,9 @@ export default function Home() {
                     {profile.cidade}
                   </div>
 
-                  <Badge variant="secondary" className="mt-3">
-                    {profile.area}
-                  </Badge>
+                  <div className="mt-3">
+                    <AreaBadge area={profile.area} />
+                  </div>
 
                   <div className="mt-4 flex flex-wrap justify-center gap-2">
                     {profile.habilidadesTecnicas.slice(0, 3).map((skill, index) => (
@@ -293,9 +294,7 @@ export default function Home() {
                     <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
                       <MapPin className="h-4 w-4" />
                       {selectedProfile.cidade}
-                      <Badge variant="secondary" className="ml-2">
-                        {selectedProfile.area}
-                      </Badge>
+                      <AreaBadge area={selectedProfile.area} className="ml-2" />
                     </div>
                   </div>
                 </div>
