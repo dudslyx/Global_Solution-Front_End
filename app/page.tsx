@@ -27,6 +27,7 @@ import { SkillBadge } from "@/components/SkillBadge"
 import profilesData from "@/data/profiles.json"
 import { useTheme } from "next-themes"
 import { SoftSkillBadge } from "@/components/SoftSkillBadge"
+import { InterestAreaBadge } from "@/components/InterestAreaBadge"
 
 interface Profile {
   id: number
@@ -366,9 +367,7 @@ export default function Home() {
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedProfile.areaInteresses.map((interesse, index) => (
-                        <Badge key={index} variant="outline">
-                          {interesse}
-                        </Badge>
+                        <InterestAreaBadge key={index} area={interesse} />
                       ))}
                     </div>
                   </div>
